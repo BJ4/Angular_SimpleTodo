@@ -33,9 +33,9 @@ app.post('/api/todos', function(req, res) {
 	Todo.create({
 		text: req.body.text,
 		done: false
-	}, function(err, todo) {
+	}, function(err, result) {
 		if(err) res.send(err);
-		console.log(todo);
+		console.log("app.post " + result);
 
 		Todo.find(function(err,todos) {
 			if(err) res.send(err);
@@ -47,9 +47,9 @@ app.post('/api/todos', function(req, res) {
 app.delete('/api/todos/:todo_id', function(req, res) {
 	Todo.remove({
 		_id: req.params.todo_id
-	}, function(err, todo) {
+	}, function(err, result) {
 		if(err) res.send(err);
-		console.log(todo);
+		console.log('app.delete ' + result);
 
 		Todo.find(function(err, todos) {
 			if(err) res.send(err);
